@@ -85,9 +85,9 @@ DATABASES = {
     "default": {
         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
         "NAME": os.environ.get("SQL_DATABASE", "bookstore_db"),
-        "USER": os.environ.get("SQL_USER", "dev"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "dev"),
-        "HOST": os.environ.get("SQL_HOST", "db"),
+        "USER": os.environ.get("SQL_USER", "bookstore_dev"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "bookstore_dev"),
+        "HOST": os.environ.get("SQL_HOST", "bookstore_dev_db"),
         "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
