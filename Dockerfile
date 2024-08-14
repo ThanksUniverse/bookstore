@@ -43,7 +43,9 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
-    && pip install psycopg2
+    && pip install --no-cache-dir psycopg2 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR $PYSETUP_PATH
