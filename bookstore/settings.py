@@ -87,7 +87,7 @@ DATABASES = {
         "NAME": os.environ.get("SQL_DATABASE", "bookstore_db"),
         "USER": os.environ.get("SQL_USER", "bookstore_dev"),
         "PASSWORD": os.environ.get("SQL_PASSWORD", "bookstore_dev"),
-        "HOST": os.environ.get("SQL_HOST", "bookstore_dev_db"),
+        "HOST": os.environ.get("SQL_HOST", "db"),
         "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
