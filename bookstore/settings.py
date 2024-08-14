@@ -83,7 +83,7 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": os.environ.get("SQL_DATABASE", "bookstore_db"),
         "USER": os.environ.get("SQL_USER", "dev"),
         "PASSWORD": os.environ.get("SQL_PASSWORD", "dev"),
