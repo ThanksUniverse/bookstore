@@ -33,6 +33,8 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
         # deps for installing poetry
         curl \
         # deps for building python deps
