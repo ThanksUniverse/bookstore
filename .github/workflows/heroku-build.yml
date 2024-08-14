@@ -3,7 +3,7 @@ name: Push Container to Heroku
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   heroku-deploy:
@@ -44,4 +44,4 @@ jobs:
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
-        run: git push heroku master:master
+        run: git push heroku main:main
