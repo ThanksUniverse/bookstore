@@ -8,24 +8,8 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [3.8]
-        poetry-version: [1.8.3]
 
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:13.0-alpine
-        env:
-          POSTGRES_USER: bookstore_dev
-          POSTGRES_PASSWORD: bookstore_dev
-          POSTGRES_DB: bookstore_dev_db
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U bookstore_dev" 
-          --health-interval 10s 
-          --health-timeout 5s 
-          --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -35,37 +19,18 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install poetry ${{ matrix.poetry-version }}
+    - name: Install poetry
       run: |
         python -m ensurepip
         python -m pip install --upgrade pip
-        python -m pip install poetry==${{ matrix.poetry-version }}
-
+        python -m pip install --upgrade poetry
     - name: View poetry --help
       run: poetry --help
 
     - name: Install dependencies
       shell: bash
-      run: poetry install
-
-    - name: Run migrations
-      env:
-        SQL_ENGINE: django.db.backends.postgresql
-        SQL_DATABASE: bookstore_dev_db
-        SQL_USER: bookstore_dev
-        SQL_PASSWORD: bookstore_dev
-        SQL_HOST: localhost
-        SQL_PORT: 5432
-      run: |
-        poetry run python manage.py migrate
+      run: python -m poetry install
 
     - name: Test
-      env:
-        SQL_ENGINE: django.db.backends.postgresql
-        SQL_DATABASE: bookstore_dev_db
-        SQL_USER: bookstore_dev
-        SQL_PASSWORD: bookstore_dev
-        SQL_HOST: localhost
-        SQL_PORT: 5432
       run: |
-        poetry run python manage.py test
+        poetry run python manage.py test 
