@@ -1,9 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from django.test import TestCase
 
-from product.factories import ProductFactory, CategoryFactory
+from product.factories import CategoryFactory, ProductFactory
 from product.serializers import CategorySerializer
 
 
